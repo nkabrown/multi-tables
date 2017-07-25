@@ -77,19 +77,3 @@ small {
   white-space: pre;
   font-size: 9px;
 }
-
-#table th {
-  width: 175px;
-  padding-left: 15px;
-}
-
-#table tr td {
-  width: 20%;
-  padding: 0;
-  padding-right: 0;
-}
-
-#table td:nth-child(3) {
-  padding-right: 75px;
-  padding-left: 75px;
-}
