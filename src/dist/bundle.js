@@ -753,11 +753,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.frequencyData = undefined;
-
 var _FrequencyDistTable = __webpack_require__(2);
 
 var d3 = __webpack_require__(0);
@@ -769,29 +764,24 @@ var d3 = __webpack_require__(0);
  * Use the symbol N to represent the total number of cases in a group.
  */
 
-var frequencyData = exports.frequencyData = function frequencyData() {
-  d3.csv('../data/scores.csv', function (error, data) {
-    if (error) throw error;
-
-    var randomDataset = function randomDataset() {
-      var dataset = [];
-      for (var i = 0; i < 100; i++) {
-        dataset.push({ score: Math.ceil(Math.random() * 50) });
-      }
-      return dataset;
-    };
-
-    var range = [0, 1, 2, 3, 4, 5, 6, 7];
-
-    range.forEach(function (r) {
-      d3.text('src/template/table.html', function (str) {
-        d3.select('.container').append('div').attr('id', 'freq-table-' + r).attr('class', 'freq-table').html(str);
-
-        new _FrequencyDistTable.FrequencyDistTable('#freq-table-' + r + ' tbody', randomDataset(), '#freq-table-' + r, 'SCORE', 'Table 2.' + (r + 1) + '   /   Simple Frequency Distribution of Anxiety Scores for 100 College Students', 'Ahana, E. Y. A study on the reliability and internal consistency of a manifest anxiety scale. M.A. thesis, Northwestern Univeristy, 1952.').init();
-      });
-    });
-  });
+// create a random dataset for 100 students taking a test with scores from 0-50
+var randomDataset = function randomDataset() {
+  var dataset = [];
+  for (var i = 0; i < 100; i++) {
+    dataset.push({ score: Math.ceil(Math.random() * 50) });
+  }
+  return dataset;
 };
+
+// create 8 tables
+var range = [0, 1, 2, 3, 4, 5, 6, 7];
+range.forEach(function (r) {
+  d3.text('src/template/table.html', function (str) {
+    d3.select('.container').append('div').attr('id', 'freq-table-' + r).attr('class', 'freq-table').html(str);
+
+    new _FrequencyDistTable.FrequencyDistTable('#freq-table-' + r + ' tbody', randomDataset(), '#freq-table-' + r, 'SCORE', 'Table 2.' + (r + 1) + '   /   Simple Frequency Distribution of Anxiety Scores for 100 College Students', 'Ahana, E. Y. A study on the reliability and internal consistency of a manifest anxiety scale. M.A. thesis, Northwestern Univeristy, 1952.').init();
+  });
+});
 
 /***/ }),
 /* 2 */
